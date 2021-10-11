@@ -6,10 +6,4 @@ COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
 RUN python manage.py collectstatic --noinput --clear
-
-# add and run as non-root user
-# RUN adduser -D myuser
-# USER myuser
-
-#CMD python manage.py runserver 0.0.0.0:8000
 CMD gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:$PORT
