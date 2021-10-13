@@ -7,19 +7,40 @@ orbs:
 
 
 jobs:
+  #Part of circle
   build-and-test:
     working_directory: /home/circleci/project
     docker:
       - image: cimg/python:3.8
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
-          pip-dependency-file: requirements.txt
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      #- python/install-packages:
+      #    pkg-manager: pip
+      #    pip-dependency-file: requirements.txt
       - run:
           name: Run tests
           command: pytest
 
+  # part of docker ub
+  build-push-docker:
+    executor: my-machine
+    steps:
+      - checkout
+      - run:
+          name: Build Docker image
+          command: docker build -t ${DOCKER_USER}/${DOCKER_NAME}:$CIRCLE_SHA1 .
+      - run:
+          name: Push Docker Image
+          command: |
+            echo ${DOCKER_TOKEN} | docker login -u ${DOCKER_USER} --password-stdin
+            docker tag ${DOCKER_USER}/${DOCKER_NAME}:${CIRCLE_SHA1} ${DOCKER_USER}/${DOCKER_NAME}:lastest
+            docker push ${DOCKER_USER}/${DOCKER_NAME}:${CIRCLE_SHA1}
+            docker push ${DOCKER_USER}/${DOCKER_NAME}:lastest
+
+  # part of Heroku
   deploy-dev:
     machine: true
     steps:
@@ -38,5 +59,6 @@ workflows:
   sample:
     jobs:
       - build-and-test
+      - build-push-docker
       - deploy-dev
 
