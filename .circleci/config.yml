@@ -23,21 +23,16 @@ jobs:
           command: pytest
 
   # part of docker ub
-  build-push-docker:
+  deploy_to_docker_hub:
     machine: true
     steps:
       - checkout
       - run:
-          name: Build Docker image
-          command: docker build -t mlsc63/lettings:$CIRCLE_SHA1
-      - run:
-          name: Push Docker Image
+          name: Build and push image to Docker_hub
           command: |
-            echo 6eb02bdb-4cfc-4e8e-8faf-566fc72e4c2b | docker login -u mlsc63 --password-stdin
-            docker tag mlsc63/lettings:$CIRCLE_SHA1 mlsc63/lettings:lastest
+            docker login -u mlsc63 -p Mopase%63000
+            docker build -t mlsc63/lettings:$CIRCLE_SHA1 .
             docker push mlsc63/lettings:$CIRCLE_SHA1
-            docker push mlsc63/lettings:lastest
-            docker push mlsc63/lettings:lastest
 
   # part of Heroku
   deploy-dev:
