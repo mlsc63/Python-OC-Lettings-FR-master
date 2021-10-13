@@ -4,9 +4,11 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.2
+  heroku: circleci/heroku@1.2.6
 
 
 jobs:
+
   #Part of circle
   build-and-test:
     working_directory: /home/circleci/project
@@ -50,9 +52,21 @@ jobs:
 
 
 workflows:
+
   sample:
     jobs:
       - build-and-test
-      - build-push-docker
-      - deploy-dev
+      - build-push-docker:
+          requires:
+          - build-and-test
+          filters:
+            branches:
+              only: master
+
+      - deploy-dev:
+          requires:
+            - build-and-test
+            filters:
+              branches:
+                only: master
 
