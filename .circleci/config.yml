@@ -34,8 +34,8 @@ jobs:
           name: Push Docker Image
           command: |
             echo 6eb02bdb-4cfc-4e8e-8faf-566fc72e4c2b | docker login -u mlsc63 --password-stdin
-            docker tagmlsc63/lettings:${CIRCLE_SHA1} mlsc63/lettings:lastest
-            docker push mlsc63/lettings:${CIRCLE_SHA1}
+            docker tagmlsc63/lettings:$CIRCLE_SHA1 mlsc63/lettings:lastest
+            docker push mlsc63/lettings:$CIRCLE_SHA1
             docker push mlsc63/lettings:lastest
             docker push mlsc63/lettings:lastest
 
