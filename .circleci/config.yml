@@ -54,7 +54,7 @@ jobs:
 
 workflows:
 
-  sample:
+  main:
     jobs:
       - build-and-test
       - build-push-docker:
