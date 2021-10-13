@@ -38,7 +38,7 @@ jobs:
             docker push mlsc63/lettings:$CIRCLE_SHA1
 
   # part of Heroku
-  deploy-dev:
+  deploy-heroku:
     machine: true
     steps:
       - checkout
@@ -57,6 +57,7 @@ workflows:
   main:
     jobs:
       - build-and-test
+
       - build-push-docker:
           requires:
           - build-and-test
@@ -64,9 +65,8 @@ workflows:
             branches:
               only: master
 
-      - deploy-dev:
-          requires:
-            - build-push-docker
+      - deploy-heroku:
+
             filters:
               branches:
                 only: master
