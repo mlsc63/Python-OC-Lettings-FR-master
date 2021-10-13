@@ -64,11 +64,12 @@ workflows:
             branches:
               only: master
 
-      - deploy-dev:
-          requires:
-            - deploy-dev
-            filters:
-              branches:
-                only: master
+      - deploy-dev
+        requires:
+          - build-and-test
+          filters:
+            branches:
+              only: master
+
 
 
