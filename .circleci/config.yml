@@ -24,7 +24,7 @@ jobs:
 
   # part of docker ub
   build-push-docker:
-    executor: my-machine
+    machine: true
     steps:
       - checkout
       - run:
