@@ -49,10 +49,7 @@ jobs:
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a ${HEROKU_NAME} web
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a ${HEROKU_NAME} web
 
-
-
 workflows:
-
   main:
     jobs:
       - build-and-test
