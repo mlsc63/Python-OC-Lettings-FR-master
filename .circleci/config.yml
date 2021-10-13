@@ -63,6 +63,6 @@ workflows:
             branches:
               only: master
 
-      - deploy-dev:
+      - deploy-dev
 
 
