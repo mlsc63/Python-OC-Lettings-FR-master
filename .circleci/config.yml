@@ -35,7 +35,7 @@ jobs:
             docker login -u mlsc63 -p Mopase%63000
             echo totototottotototototo
             echo $CIRCLE_SHA1
-            docker build -t mlsc63/lettings:$CIRCLE_SHA1 .
+            docker build -t mlsc63/lettings:test .
             docker push mlsc63/lettings:$CIRCLE_SHA1
 
   # part of Heroku
