@@ -14,12 +14,10 @@ jobs:
       - image: cimg/python:3.8
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
-      #- python/install-packages:
-      #    pkg-manager: pip
-      #    pip-dependency-file: requirements.txt
+
+      - python/install-packages:
+          pkg-manager: pip
+          pip-dependency-file: requirements.txt
       - run:
           name: Run tests
           command: pytest
@@ -59,6 +57,6 @@ workflows:
   sample:
     jobs:
       - build-and-test
-      - build-push-docker
+      #- build-push-docker
       - deploy-dev
 
