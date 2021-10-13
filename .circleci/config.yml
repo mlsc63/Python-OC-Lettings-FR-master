@@ -23,7 +23,7 @@ jobs:
           command: pytest
 
   # part of docker ub
-  deploy_to_docker_hub:
+  build-push-docker:
     machine: true
     steps:
       - checkout
