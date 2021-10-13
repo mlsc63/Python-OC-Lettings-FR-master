@@ -1,9 +1,6 @@
 # syntax=docker/dockerfile:1
-FROM python:3
+FROM python:3.7
 ENV PYTHONUNBUFFERED=1
-ENV PYTHONUNBUFFERED 1
-ENV ALLOWED_HOSTS=127.0.0.1,[::1],0.0.0.0,.herokuapp.com
-
 
 WORKDIR /code
 COPY requirements.txt /code/
