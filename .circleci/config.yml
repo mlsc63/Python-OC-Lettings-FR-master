@@ -33,6 +33,7 @@ jobs:
           name: Build and push image to Docker_hub
           command: |
             docker login -u mlsc63 -p Mopase%63000
+            echo totototottotototototo
             echo $CIRCLE_SHA1
             docker build -t mlsc63/lettings:$CIRCLE_SHA1 .
             docker push mlsc63/lettings:$CIRCLE_SHA1
