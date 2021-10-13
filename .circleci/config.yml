@@ -66,10 +66,11 @@ workflows:
               only: master
 
       - deploy-heroku:
-
-            filters:
-              branches:
-                only: master
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: master
 
 
 
