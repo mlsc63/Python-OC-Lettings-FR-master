@@ -56,7 +56,6 @@ workflows:
   sample:
     jobs:
       - build-and-test
-      -
       - build-push-docker:
           requires:
           - build-and-test
@@ -65,5 +64,5 @@ workflows:
               only: master
 
       - deploy-dev:
-        
+
 
