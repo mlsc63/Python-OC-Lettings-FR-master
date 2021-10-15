@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Letting
 
+
 def lettings_index(request):
     lettings_list = Letting.objects.all()
     context = {'lettings_list': lettings_list}
