@@ -1,5 +1,5 @@
 from django.db import models
-from oc_lettings_site.models import Address
+from app.models import Address
 
 
 class Letting(models.Model):

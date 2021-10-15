@@ -75,3 +75,28 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+### Circleci, Heroku, Docker, Sentry
+Dans un premier temps, il faut créer un compte sur chacun de ces site
+##Circleci
+Après avoir créé un compte, il faudra jumeler le projet sur votre GitHub dans Cirleci
+Pour paramétrer le projet sur cricle il faudra créer des variables d'environement pour la bonne exéction du ficher config.yml
+
+-DOCKER_PASSWORD
+Mot de passe de votre compte Docker
+
+-DOCKER_PROJECT_NAME	
+Nom du projet qui vous avez créé.
+
+-DOCKER_USERNAME
+Votre identifiant Docker
+
+-HEROKU_NAME
+Nom du projet qui vous avez créé
+
+-HEROKU_TOKEN
+Token qui est associé au projet Heroku
+
+### Récupérer l'image Docker en local
+Pour avoir l'image en local, il faut taper la commande suivante dans un terminal 
+- `docker run -d -p 8000:8000 docker/getting-started`

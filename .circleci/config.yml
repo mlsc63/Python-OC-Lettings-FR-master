@@ -34,10 +34,10 @@ jobs:
       - run:
           name: Build and push image to Docker_hub
           command: |
-            docker login -u ${HEROKU_USERNAME} -p ${HEROKU_PASSWORD}
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
             echo $CIRCLE_SHA1
-            docker build -t ${HEROKU_USERNAME}/${HEROKU_PROJECT_NAME}:$CIRCLE_SHA1 .
-            docker push ${HEROKU_USERNAME}/${HEROKU_PROJECT_NAME}:$CIRCLE_SHA1
+            docker build -t ${DOCKER_USERNAME}/${DOCKER_PROJECT_NAME}:$CIRCLE_SHA1 .
+            docker push ${DOCKER_USERNAME}/${DOCKER_PROJECT_NAME}:$CIRCLE_SHA1
 
   # part of Heroku
   deploy-heroku:
