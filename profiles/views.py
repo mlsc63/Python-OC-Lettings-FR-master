@@ -6,7 +6,7 @@ def profiles_index(request):
     profiles_list = Profile.objects.all()
     print(profiles_list)
     context = {'profiles_list': profiles_list}
-    return render(request, 'procfile/profiles_index.html', context)
+    return render(request, 'procfile/index.html', context)
 
 
 def profile(request, username):
