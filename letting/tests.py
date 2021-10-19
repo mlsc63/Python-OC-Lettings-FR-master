@@ -12,6 +12,12 @@ class TestLetting(TestCase):
         self.letting = Letting.objects.create(title="test titre", address=self.address)
         self.reverse = reverse('lettings:lettings_index')
 
-    def test_animals_can_speak(self):
+        self.reverse_id = reverse("lettings:letting", args=[1])
+
+    def test_letting(self):
         response = self.client.get(self.reverse)
+        self.assertContains(response, text='test titre')
+
+    def test_letting_with_id(self):
+        response = self.client.get(self.reverse_id)
         self.assertContains(response, text='test titre')

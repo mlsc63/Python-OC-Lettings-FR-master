@@ -11,6 +11,6 @@ def profiles_index(request):
 
 
 def profile(request, username):
-    def_profile = Profile.objects.get(user__username=username)
-    context = {'profile': def_profile}
+    profile = Profile.objects.get(user__username=username)
+    context = {'profile': profile}
     return render(request, 'procfile/profile.html', context)
