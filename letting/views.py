@@ -9,9 +9,9 @@ def lettings_index(request):
 
 
 def letting(request, letting_id):
-    def_letting = Letting.objects.get(id=letting_id)
+    letting = Letting.objects.get(id=letting_id)
     context = {
-        'title': def_letting.title,
-        'address': def_letting.address,
+        'title': letting.title,
+        'address': letting.address,
     }
     return render(request, 'letting/letting.html', context)
