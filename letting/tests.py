@@ -1,6 +1,5 @@
 from django.test import TestCase
 from .models import Letting
-from django.contrib.auth.models import User
 from app.models import Address
 from django.urls import reverse
 
